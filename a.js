@@ -4,7 +4,6 @@ function print(text){
 
 function new_syllable(lenmax,lenmin,slblist){
 	var strlen = Math.floor(Math.random()*(lenmax-lenmin)+(lenmin-0));
-	console.log(strlen);
 	var word = "";
 	for(var i=0;i<strlen;i++){
 		word += choice(slblist);
