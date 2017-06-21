@@ -1,7 +1,20 @@
 function print(text){
-	document.write(text);
+	document.getElementById("m").innerHTML+=(text);
 }
 
+function new_syllable(lenmax,lenmin,slblist){
+	var strlen = Math.floor(Math.random()*(lenmax-lenmin)+(lenmin-0));
+	console.log(strlen);
+	var word = "";
+	for(var i=0;i<strlen;i++){
+		word += choice(slblist);
+	}
+	return word;
+}
+
+function choice(arr){
+		return arr[Math.random()*arr.length|0];
+	}
 
 
 function main(){
@@ -28,29 +41,20 @@ function main(){
 	var vowlist = vow.split(',')
 	var slblist = slb.split(',')
 
-	function choice(arr){
-		return arr[Math.random()*arr.length|0];
-	}
+	
 
-	function new_syllable(){
-		var strlen = Math.floor(Math.random()*(lenmax-lenmin)+lenmin)
-		var word = "";
-		for(var i=0;i<strlen;i++){
-			word += choice(slblist);
-		}
-		return word;
-	}
+	
 
 	print("【辞書】<br>")
 	var dictionary = {};
 	for(var i=0;i<elements.length;i++){
 		var newword="";	
-		var syll = new_syllable();
+		var syll = new_syllable(lenmax,lenmin,slblist);
 		for(var j=0;j<syll.length;j++){
 			newword += syll[j] === 'C' ? choice(conlist) : choice(vowlist)
 		}
 		dictionary[elements[i]] = newword;
-		document.write(elements[i] + " " + newword + "<br>");
+		print(elements[i] + " " + newword + "<br>");
 	}
 
 
